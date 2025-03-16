@@ -42,8 +42,14 @@ the appropriate class instance.
 objects.
 ![img.png](factory-method.png)
 
+### Abstract Factory
+Abstract factory provides an interface for creating families of related or dependent objects without specifying
+their concrete classes.
 
-
+Factory Method is specifying a method for the creation of an object, thus
+allowing subclasses or implementing classes to define the concrete object. Abstract
+Factories are usually implemented using the Factory Method pattern. Another
+approach would be to use the Prototype pattern.
 
 ## Structural Patterns
 
