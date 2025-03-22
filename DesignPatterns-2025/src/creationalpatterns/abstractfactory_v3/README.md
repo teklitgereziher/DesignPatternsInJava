@@ -15,7 +15,7 @@ Customer data management application with the following features:
 
 Three different parts of the customer data:
 
-| Product    | Family | Combination      | Factory         |
+| Product    | Family | Product Family   | Factory         |
 |------------|--------|------------------|-----------------|
 | Account    | Remote | RemoteAccount    | CustomerFactory |
 | Address    | Local  | LocalAccount     |

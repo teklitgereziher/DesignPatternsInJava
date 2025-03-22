@@ -9,7 +9,7 @@ import creationalpatterns.abstractfactory_v3.concreteproducts.LocalCreditCard;
 import creationalpatterns.abstractfactory_v3.factory.CustomerFactory;
 
 /**
- * This is a factory
+ * This is a concrete factory that specifies its products by overriding each factory method of the abstract factory.
  */
 public class LocalCustomerFactory implements CustomerFactory {
     @Override
