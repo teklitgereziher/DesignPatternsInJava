@@ -1,4 +1,6 @@
-package creationalpatterns.abstractfactory;
+package creationalpatterns.abstractfactory.concreteproducts;
+
+import creationalpatterns.abstractfactory.abstractproducts.Car;
 
 public class LuxuryCar implements Car {
     private String name;

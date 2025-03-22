@@ -1,8 +1,8 @@
 package creationalpatterns.abstractfactory.client;
 
-import creationalpatterns.abstractfactory.Car;
-import creationalpatterns.abstractfactory.SUV;
-import creationalpatterns.abstractfactory.factories.VehicleFactory;
+import creationalpatterns.abstractfactory.abstractproducts.Car;
+import creationalpatterns.abstractfactory.abstractproducts.SUV;
+import creationalpatterns.abstractfactory.factory.VehicleFactory;
 
 public class AutoSearch {
     public static void main(String[] args) {

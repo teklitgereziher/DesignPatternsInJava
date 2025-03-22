@@ -1,7 +1,9 @@
-package creationalpatterns.abstractfactory.factories;
+package creationalpatterns.abstractfactory.factory;
 
-import creationalpatterns.abstractfactory.Car;
-import creationalpatterns.abstractfactory.SUV;
+import creationalpatterns.abstractfactory.abstractproducts.Car;
+import creationalpatterns.abstractfactory.abstractproducts.SUV;
+import creationalpatterns.abstractfactory.concretefactories.LuxuryVehicleFactory;
+import creationalpatterns.abstractfactory.concretefactories.NonLuxuryVehicleFactory;
 
 public abstract class VehicleFactory {
     public static final String LUXURY_VEHICLE = "Luxury";

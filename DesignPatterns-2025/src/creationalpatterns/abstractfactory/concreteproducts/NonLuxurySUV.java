@@ -1,4 +1,6 @@
-package creationalpatterns.abstractfactory;
+package creationalpatterns.abstractfactory.concreteproducts;
+
+import creationalpatterns.abstractfactory.abstractproducts.SUV;
 
 public class NonLuxurySUV implements SUV {
     private String name;
