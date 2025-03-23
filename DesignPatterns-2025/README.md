@@ -89,6 +89,14 @@ Use the Abstract Factory pattern when:
 - you want to provide a class library of products, and you want to reveal just their
   interfaces, not their implementations.
 
+### Singleton
+
+In a singleton pattern, a class only has one instance, and provide a global point of access to it.
+The class itself responsible for keeping track of its sole instance.
+The class can ensure that no other instance can be created (by intercepting requests to
+create new objects), and it can provide a way to access the instance. This is the Singleton
+pattern.
+
 ## Structural Patterns
 
 ## Behavioral Patterns
