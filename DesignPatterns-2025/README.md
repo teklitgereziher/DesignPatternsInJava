@@ -97,6 +97,32 @@ The class can ensure that no other instance can be created (by intercepting requ
 create new objects), and it can provide a way to access the instance. This is the Singleton
 pattern.
 
+### Prototype
+
+Prototype pattern specifies the kinds of objects to create using a prototypical instance, and create new objects
+by copying this prototype.
+In Prototype pattern we:
+
+- Create one object upfront and designate it as a prototype object.
+- Create other objects by simply making a copy of the prototype object and making required modifications.
+
+#### Shallow Copy Versus Deep Copy
+
+When an object is cloned as a shallow copy:
+
+- The original top-level object and all of its primitive members are duplicated.
+- Any lower-level objects that the top-level object contains are not duplicated.
+  Only references to these objects are copied. This results in both the original
+  and the cloned object referring to the same copy of the lower-level object.
+
+When an object is cloned as a deep copy:
+
+- The original top-level object and all of its primitive members are duplicated.
+- Any lower-level objects that the top-level object contains are also duplicated.
+  In this case, both the original and the cloned object refer to two different lower-level objects. The lower-level
+  object is duplicated and is not shared by
+  both the original and the cloned top-level objects.
+
 ## Structural Patterns
 
 ## Behavioral Patterns
