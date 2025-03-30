@@ -125,10 +125,53 @@ When an object is cloned as a deep copy:
 
 ### Builder
 
+In general, object construction details such as instantiating and initializing the
+components that make up the object are kept within the object, often as part of
+its constructor. This approach is suitable as long as the object under construction is simple and the object
+construction process is definite and always produces the same representation of the object.
+
+The `Builder` pattern suggests moving the construction logic out of the object class to a separate class referred to as
+a `builder` class. There can be more than one such builder class each with different implementation
+for the series of steps to construct the object. Each such builder implementation
+results in a different representation of the object. The object construction process becomes independent of the
+components that make up the object. Each of the different steps in the construction process
+can be declared as methods of a common interface to be implemented by different
+concrete builders.
+![img.png](img.png)
+*Builder Class Hierarchy*
+
+The Builder pattern introduces another level of separation called `Director`. Instead of having client objects invoke
+different builder methods directly, the Builder pattern suggests using a dedicated object referred to as a `Director` ,
+which is responsible for invoking different builder methods required for the construction of the final object. Different
+client objects
+can make use of the Director object to create the required object. Once the object
+is constructed, the client object can directly request from the builder the fully
+constructed object. To facilitate this process, a new method `getObject` can be
+declared in the common Builder interface to be implemented by different concrete
+builders.
+![img_1.png](img_1.png)
+*Builder class association*
+
+The interaction between the client object, the Director and the Builder objects
+can be summarized as follows:
+
+- The client object creates instances of an appropriate concrete Builder
+  implementer and the Director. The client may use a factory for creating an appropriate Builder object.
+  ```Java 
+  Director director = new Director(); CarBuilder builder = new CarBuilder();
+  ```
+- The client associates the Builder object with the Director object.
+- The client invokes the build method on the Director instance to begin the object creation process. Internally, the
+  Director invokes different Builder methods required to construct the final object.
+  ```Java 
+  director.constructSportsCar(builder);
+  ```
+- Once the object creation is completed, the client invokes the getObject method on the concrete Builder instance to get
+  the newly created object.
+
 A builder pattern separates the construction of a complex object from its representation so that the same
-construction process can create different representations.
-The Builder pattern suggests moving the construction
-logic out of the object class to a separate class referred to as a builder class.
+construction process can create different representations. The Builder pattern suggests moving the construction logic
+out of the object class to a separate class referred to as a builder class.
 
 Use the Builder pattern when:
 
@@ -172,6 +215,27 @@ getObject();
   assembled.
 - includes classes that define the constituent parts, including interfaces for
   assembling the parts into the final result.
+
+Example 1
+A typical online job site maintains employer-, candidate- and jobs-related data.
+Let us build an application using the Builder pattern that displays the necessary
+user interface to allow a user to search for different employers and candidates in
+the database.
+
+- Employer Search
+    - Name
+    - City
+    - Membership Renewal Date
+- Candidate Search
+    - Name
+    - Experience (minimum number of years)
+    - Skill Set
+
+The required user interface (UI) for each of these searches requires a different combination of UI controls. In terms of
+implementation, the required set of UI
+controls can be placed in a JPanel container. The Builder pattern can be used in this case with different builder
+objects constructing the JPanel object with
+the necessary UI controls and initializing them appropriately.
 
 ## Structural Patterns
 
