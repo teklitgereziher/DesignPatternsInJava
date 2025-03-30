@@ -239,6 +239,85 @@ the necessary UI controls and initializing them appropriately.
 
 ## Structural Patterns
 
+Structural patterns primarily:
+
+- Deal with objects delegating responsibilities to other objects. This results in a layered architecture of components
+  with low degree of coupling.
+- Facilitate interobject communication when one object is not accessible to the other by normal means or when an object
+  is not usable because of
+  its incompatible interface.
+
+### Decorator
+
+The Decorator Pattern is used to extend the functionality of an object dynamically
+without having to change the original class source or using inheritance. This is
+accomplished by creating an object wrapper referred to as a Decorator around
+the actual object.
+
+- The Decorator object is designed to have the same interface as the underlying object. This allows a client object to
+  interact with the Decorator
+  object in exactly the same manner as it would with the underlying actual object.
+- The Decorator object contains a reference to the actual object.
+- The Decorator object receives all requests (calls) from a client. It in turn forwards these calls to the underlying
+  object.
+- The Decorator object adds some additional functionality before or after forwarding requests to the underlying object.
+  This ensures that the additional
+  functionality can be added to a given object externally at runtime without modifying its structure.
+
+| Decorator Pattern                                                                                                                                                               | Inheritance                                                                                                                                                         |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Used to extend the functionality of a particular object.                                                                                                                        | Used to extend the functionality of a class of objects.                                                                                                             |
+| Does not require subclassing.                                                                                                                                                   | Requires subclassing.                                                                                                                                               |
+| Dynamic                                                                                                                                                                         | Static                                                                                                                                                              |
+| Runtime assignment of responsibilities.                                                                                                                                         | Compile time assignment of responsibilities.                                                                                                                        |
+| Prevents the proliferation of subclasses leading to less complexity and confusion.                                                                                              | Could lead to numerous subclasses, exploding class hierarchy on specific occasions.                                                                                 |
+| More flexible                                                                                                                                                                   | Less flexible                                                                                                                                                       |
+| Possible to have different decorator objects for a given object simultaneously. A client can choose what capabilities it wants by sending messages to an appropriate decorator. | Having subclasses for all possible combinations of additional capabilities, which clients expect out of a given class, could lead to a proliferation of subclasses. |
+| Easy to add any combination of capabilities. The same capability can even be added twice.                                                                                       | Difficult                                                                                                                                                           |
+
+![img_2.png](img_2.png)
+Logger with the following two small features that clients would like to have:
+
+- Transform an incoming message to an HTML document.
+- Apply a simple encryption by transposition logic on an incoming message.
+
+Inheritance approach to solve the above requirement would look like as the diagram shown below.
+![img_3.png](img_3.png)
+*Class Hierarchy after Applying Inheritance*
+
+The Decorator pattern comes to our rescue in situations like this. The Decorator
+pattern recommends having a wrapper around an object to extend its functionality
+by object composition rather than by inheritance.
+Applying the Decorator pattern, let us define a default root decorator
+LoggerDecorator for the message logging utility with the following
+characteristics:
+
+- The LoggerDecorator contains a reference to a Logger instance. This
+  reference points to a Logger object it wraps.
+- The LoggerDecorator implements the Logger interface and provides
+  the basic default implementation for the log method, where it simply
+  forwards an incoming call to the Logger object it wraps. Every subclass
+  of the LoggerDecorator is hence guaranteed to have the log method
+  defined in it.
+
+A decorator object must provide the same interface as the object it wraps. When clients
+create an instance of the decorator, they interact with the decorator in exactly the
+same manner as they would with the original object using the same interface.
+![img_4.png](img_4.png)
+*Class Structure after Decorator pattern applied*
+
+In order to log messages using the newly designed decorators a client object needs to:
+
+- Create an appropriate Logger instance (FileLogger/ConsoleLogger) using the LoggerFactory factory method.
+- Create an appropriate LoggerDecorator instance by passing the Logger instance created in Step 1 as an argument to its
+  constructor.
+- Invoke methods on the LoggerDecorator instance as it would on the Logger instance.
+
+### Adapter
+
+Allows the conversion of the interface of a class to another interface that clients expect. This allows
+classes with incompatible interfaces to work together.
+
 ## Behavioral Patterns
 
 # UML
