@@ -163,9 +163,11 @@ can be summarized as follows:
 - The client associates the Builder object with the Director object.
 - The client invokes the build method on the Director instance to begin the object creation process. Internally, the
   Director invokes different Builder methods required to construct the final object.
-  ```Java 
-  director.constructSportsCar(builder);
-  ```
+
+```Java 
+director.constructSportsCar(builder);
+```
+
 - Once the object creation is completed, the client invokes the getObject method on the concrete Builder instance to get
   the newly created object.
 
@@ -357,7 +359,55 @@ adapter, an object adapter also implements the interface, which the client expec
 When a client object calls an object adapter method, the object adapter invokes
 an appropriate method on the adaptee instance whose reference it contains.
 
+### FAÇADE
+
+In real world applications, a subsystem could consist of a large number of
+classes. Clients of a subsystem may need to interact with a number of subsystem
+classes for their needs. This kind of direct interaction of clients with subsystem
+classes leads to a high degree of coupling between the client objects and the
+subsystem.
+
+The Façade pattern provides a higher level, simplified interface for a subsystem resulting in reduced complexity
+and dependency. A façade is a class that provides this simplified interface for a subsystem to
+be used by clients. With a Façade object in place, clients interact with the
+Façade object instead of interacting directly with subsystem classes. The Façade
+object takes up the responsibility of interacting with the subsystem classes. In
+effect, clients interface with the façade to deal with the subsystem. Thus the
+Façade pattern promotes a weak coupling between a subsystem and its clients.
+![img_5.png](img_5.png)
+*Client Interaction with Subsystem Classes using Façade Pattern*
+
 ## Behavioral Patterns
+
+### Strategy Pattern
+
+The Strategy pattern is useful when there is a set of related algorithms and a
+client object needs to be able to dynamically pick and choose an algorithm from
+this set that suits its current need.
+
+The Strategy pattern suggests keeping the implementation of each of the
+algorithms in a separate class. Each such algorithm encapsulated in a separate
+class is referred to as a strategy. An object that uses a Strategy object is often
+referred to as a context object.
+
+To enable a Context object to access different Strategy objects in a
+seamless manner, all Strategy objects must be designed to offer the same interface.
+
+The difference between `strategy` and `state` patterns is that the Strategy pattern deals with a set of related
+algorithms, which are more similar
+in what they do as opposed to different state-specific behavior encapsulated in different State objects in the State
+pattern.
+
+Key Components of the Strategy Pattern
+**Context**: The Context is the class that utilizes the Strategy. It references one of the strategies and can switch
+between them. The Context delegates the task to a Strategy object instead of implementing the algorithm directly, which
+makes the Context independent of the algorithm’s variations.
+**Strategy Interface**: The Strategy interface declares a common method or set of algorithm execution techniques. This
+method serves as a contract that all Concrete Strategies must implement, ensuring that they can be used interchangeably
+by the Context.
+**Concrete Strategies**: Concrete Strategies are classes that implement the Strategy interface. Each Concrete Strategy
+class provides a unique implementation of the algorithm, enabling a runtime decision based on the current strategy
+without requiring any change in the client code.
 
 # UML
 
