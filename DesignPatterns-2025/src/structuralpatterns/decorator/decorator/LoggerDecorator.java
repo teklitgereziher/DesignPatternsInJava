@@ -2,7 +2,7 @@ package structuralpatterns.decorator.decorator;
 
 import structuralpatterns.decorator.existing.Logger;
 
-public class LoggerDecorator {
+public class LoggerDecorator implements Logger {
     public Logger logger;
 
     public LoggerDecorator(Logger inp_logger) {
